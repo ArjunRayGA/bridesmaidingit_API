@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   resources :todos
   resources :projects
-  resources :events
+  resources :events, only: [:index, :show, :create, :update]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'

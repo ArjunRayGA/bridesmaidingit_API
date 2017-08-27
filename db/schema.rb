@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170826023224) do
     t.text     "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer  "user_id", null: false
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
