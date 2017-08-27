@@ -8,3 +8,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(email: 'acarlotto@cox.net', password: 'summer')
+Event.create(title: '')
