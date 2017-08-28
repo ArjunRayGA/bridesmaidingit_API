@@ -10,4 +10,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'acarlotto@cox.net', password: 'summer')
-Event.create(title: '')
+Event.create(title: 'test event title name', user_id: 1)
+Todo.create(name: 'test todo name', event_id: 1)

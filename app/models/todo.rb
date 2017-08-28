@@ -1,3 +1,3 @@
 class Todo < ApplicationRecord
-  belongs_to :event, dependent: :destroy
+  belongs_to :event
 end

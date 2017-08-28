@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826023224) do
+ActiveRecord::Schema.define(version: 4) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
     t.text     "title"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id", null: false
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -31,26 +31,11 @@ ActiveRecord::Schema.define(version: 20170826023224) do
     t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
-  end
-
   create_table "todos", force: :cascade do |t|
     t.text     "name"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "event_id"
     t.index ["event_id"], name: "index_todos_on_event_id", using: :btree
   end
 
@@ -66,6 +51,5 @@ ActiveRecord::Schema.define(version: 20170826023224) do
 
   add_foreign_key "events", "users"
   add_foreign_key "examples", "users"
-  add_foreign_key "tasks", "projects"
   add_foreign_key "todos", "events"
 end

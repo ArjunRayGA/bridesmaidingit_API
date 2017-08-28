@@ -27,8 +27,8 @@ class TodosController < ApplicationController
 
   # PATCH/PUT /todos/1
   def update
-    Todo.update(todo_params)
-    if @todo.update(todo_params)
+    Todo.update(name_params)
+    if @todo.update(name_params)
       render json: @todo
     else
       render json: @todo.errors, status: :unprocessable_entity
@@ -49,5 +49,9 @@ class TodosController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def todo_params
       params.require(:todo).permit(:name, :event_id)
+    end
+
+    def name_params
+      params.require(:todo).permit(:name)
     end
 end

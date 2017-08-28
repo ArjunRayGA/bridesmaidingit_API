@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   # POST /events
   def create
     # was
+    # binding.pry
     Event.create(event_params)
     @event = Event.new(event_params)
     # added
