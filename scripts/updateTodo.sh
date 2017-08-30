@@ -9,7 +9,7 @@ curl "${API}${URL_PATH}/3" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "todo": {
-      "name": "order invites skdjfdslj",
+      "name": "test",
       }
   }'
 

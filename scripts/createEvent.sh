@@ -9,9 +9,9 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "event": {
-      "title": "title testing curl yay",
+      "title": "Order Invitations",
       "user_id": "1",
-      "event_id":"4"
+      "event_id": "1"
     }
   }'
 

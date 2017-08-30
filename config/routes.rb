@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :events
   post '/events/' => 'events#create'
+  get '/event/:id' => 'event#show'
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out/:id' => 'users#signout'

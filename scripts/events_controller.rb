@@ -4,25 +4,24 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
-    # @events = current_user.events.all.order(updated_at: :desc)
 
     render json: @events
   end
 
   # GET /events/1
   def show
-    @events = current_user.event(event_params)
-    # @user = User.find(params[:id])
-    # @events = Event.find(params[:id])
+    @events = current_user.events
+    # @events = Event.all
     # @event.user_id = current_user.id
-    # @events = Event.find(:set_event)
-    # @events = Event.find(params[:id])
     # render json: Event.find(params[:id])
     render json: @events
   end
 
   # POST /events
   def create
+    # was
+    # binding.pry
+    # Event.create(event_params)
     @event = Event.new(event_params)
     # added
     # @event = current_user.event.build(event_params)
@@ -36,11 +35,12 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
-    @event.update(event_params)
-    if @event.save
-    render json: @event
+    # Event.update(event_params)
+    if @event.update(event_params)
+      # binding.pry
+      render json: @event
     else
-    render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors, status: :unprocessable_entity
     end
   end
 
@@ -53,13 +53,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
-      # @event = Event.find(params[:id])
-      # @event = current_user.events.find(params[:id])
-      # binding.pry
     end
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :user_id)
+      params.require(:event).permit(:title, :user_id, :event_id)
     end
 end

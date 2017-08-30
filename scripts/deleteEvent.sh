@@ -2,7 +2,7 @@
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/events"
-curl "${API}${URL_PATH}/5" \
+curl "${API}${URL_PATH}/17" \
   --include \
   --request DELETE \
   --header "Content-Type: application/json" \
