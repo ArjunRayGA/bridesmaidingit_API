@@ -1,11 +1,11 @@
-class EventsController < ApplicationController
+class EventsController < ProtectedController
   before_action :set_event, only: [:show, :update, :destroy]
   # before_action :set_events, only: []
 
   # GET /events
   def index
-    # TEST @user_events = Event.where('user_id = ?', current_user.id)
-    @events = Event.all
+    @events = Event.where('user_id = ?', current_user.id)
+    # @events = Event.all
 
     render json: @events
   end
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     # render json: Event.find(params[:id])
     # render json: @events
     # OLD render json: @user_events
-    render json: Event.find(params[:user_id])
+    render json: Event.find(params[:id])
   end
 
   # POST /events
@@ -60,13 +60,14 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
+      # @event = current_user.examples.find(params[:user_id])
     end
 
 
-    def set_user
-      @user_id = Event.find(params[:event['user_id']])
-    end
+    # def set_user
+    #   @user_id = Event.find(params[:event['user_id']])
+    # end
 
     # Only allow a trusted parameter "white list" through.
     def event_params

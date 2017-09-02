@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/events/33"
+URL_PATH="/events/48"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request PATCH \
@@ -9,8 +9,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "event": {
-      "title": "You are great",
-      "user_id": "1"
+      "title": "You are great"
       }
   }'
 
