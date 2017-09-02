@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
-  # before_action :set_events, only: [:index]
+  # before_action :set_events, only: []
 
   # GET /events
   def index
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     # @user_events = Event.where('user_id = ?', current_user.id)
-    @events = current_user.event(event_params)
+    # @events = current_user.event(event_params)
     # @user = User.find(params[:id])
     # @events = Event.find(params[:id])
     # @event.user_id = current_user.id
@@ -60,13 +60,11 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
-      # @event = Event.find(params[:id])
-      # @event = current_user.events.find(params[:id])
-      # binding.pry
     end
 
+
     def set_user
-      @user_id = Event.find(params[:event['user_id']])
+      # @user_id = Event.find(params[:event['user_id']])
     end
 
     # Only allow a trusted parameter "white list" through.
